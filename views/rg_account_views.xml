@@ -22,9 +22,14 @@
                 <form string="记账" version="7.0">
     <sheet>
         <div class="oe_title">
-           <group>
-            <field name="res_partner_id"/>
-        </group>
+                    <group>
+            <group>
+              <field name="res_partner_id"/>
+            </group>
+            <group>
+            
+            </group>
+          </group>
             <h1>
                 <field name="name" required="1"/>
             </h1>

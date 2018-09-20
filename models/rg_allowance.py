@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+
 class RgAllowance(models.Model):
     _name = 'rg.allowance'
     _description = u'补助'

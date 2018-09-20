@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_vacation_view_tree_333" model="ir.ui.view">
+            <field name="name">rg.vacation.view_tree</field>
+            <field name="model">rg.vacation</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="假期">
+               <field name="name"/>
+               <field name="create_date"/>
+ </tree>
+            </field>
+        </record>
+        <record id="rg_vacation_view_form_334" model="ir.ui.view">
+            <field name="name">rg.vacation.view_form</field>
+            <field name="model">rg.vacation</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="假期" version="7.0">
+    <sheet>
+        <div class="oe_title">
+          <group>
+            <group>
+              <field name="create_date"/>
+            </group>
+            <group>
+            
+            </group>
+          </group>
+            <h1>
+                <field name="name" required="1"/>
+            </h1>
+        </div>
+        <notebook>
+            <page string="明细">
+                <field name="rg_vacation_record_ids">
+                    <tree editable="bottom">
+                        <field name="postgraduate_id"/>
+                        <field name="departure_date"/>
+                        <field name="return_date"/>
+                    </tree>
+                </field>
+            </page>
+        </notebook>
+    </sheet>
+</form>
+            </field>
+        </record>
+        <record id="rg_vacation_action_122" model="ir.actions.act_window">
+            <field name="name">假期</field>
+            <field name="res_model">rg.vacation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_vacation_view_tree_333')}),
+                        
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_vacation_view_form_334')}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_vacation_action_122" id="rg_vacation_menuitem_111_1537458490" name="假期" parent="parent_menu_109" sequence="10"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_attendance_view_tree_331" model="ir.ui.view">
+            <field name="name">rg.attendance.view_tree</field>
+            <field name="model">rg.attendance</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="出勤">
+    <field name="name"/>
+    <field name="start_date"/>
+    <field name="end_date"/>
+    <field name="total_times"/>
+    <field name="postgraduate_ids" widget="many2many_tags"/>
+</tree>
+            </field>
+        </record>
+        <record id="rg_attendance_view_form_332" model="ir.ui.view">
+            <field name="name">rg.attendance.view_form</field>
+            <field name="model">rg.attendance</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="出勤" version="7.0">
+    <sheet>
+        <div class="oe_title">
+            <group>
+                <group>
+                    <field name="start_date"/>
+                </group>
+                <group>
+                    <field name="end_date"/>
+                </group>
+            </group>
+            <h1>
+                <field name="name" required="1"/>
+            </h1>
+        </div>
+        <notebook>
+        <page string="明细">
+            <field name="detail_ids">
+                <tree editable="bottom">
+                    <field name="postgraduate_id"/>
+                    <field name="times_of_normal"/>
+                    <field name="times_of_late"/>
+                    <field name="times_of_leave"/>
+                </tree>
+            </field>
+        </page>
+        </notebook>
+        <group>
+        <group>
+            <field name="total_times"/>
+        </group>
+               <group>
+            <field name="postgraduate_ids" widget="many2many_tags"/>
+        </group>
+        </group>
+    </sheet>
+</form>
+            </field>
+        </record>
+        <record id="rg_attendance_action_121" model="ir.actions.act_window">
+            <field name="name">出勤</field>
+            <field name="res_model">rg.attendance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_attendance_view_tree_331')}),
+                        
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_attendance_view_form_332')}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_attendance_action_121" id="rg_attendance_menuitem_110_1537458490" name="出勤" parent="parent_menu_109" sequence="10"/>
+
+    </data>
+</openerp>

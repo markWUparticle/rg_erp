@@ -1,7 +1,6 @@
 # coding=utf-8
 
 from odoo import models, fields, api
-import datetime
 
 
 class RgAccount(models.Model):
@@ -11,7 +10,7 @@ class RgAccount(models.Model):
 
     name = fields.Char(string='名称')
     res_partner_id = fields.Many2one('res.partner', string='所属',
-                                      domain=[('identity_type', 'in', ['tutor', 'master', 'doctorate'])])
+                                      domain=[('identity_type', 'in', ['tutor'])])
     amount = fields.Float(string='余额/￥', compute='')
     detail_ids = fields.One2many('rg.account.detail', 'rg_account_id', string='明细')
 

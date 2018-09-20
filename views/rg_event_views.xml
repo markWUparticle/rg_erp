@@ -23,9 +23,14 @@
                 <form string="活动" version="7.0">
       <sheet>
         <div class="oe_title">
+          <group>
             <group>
-                <field name="create_date"/>
+              <field name="create_date"/>
             </group>
+            <group>
+            
+            </group>
+          </group>
             <h1>
                 <field name="name" required="1"/>
             </h1>
