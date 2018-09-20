@@ -12,12 +12,12 @@
     <field name="grade"/>
     <field name="identity_type"/>
     <field name="tutor_id"/>
-    <field name="is_candidate"/>
     <field name="phone"/>
     <field name="email"/>
     <field name="id_card"/>
     <field name="native_place"/>
     <field name="bank_ids" widget="many2many_tags"/>
+    <field name="is_candidate"/>
 </tree>
             </field>
         </record>
@@ -41,7 +41,7 @@
             <field name="arch" type="xml">
                 <tree string="联系人" editable="bottom">
     <field name="name"/>
-    <field name="identity_type"/>
+    <field name="identity_type" invisible="1"/>
     <field name="title"/>
     <field name="mobile"/>
     <field name="phone"/>
@@ -85,7 +85,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>
-            <field name="domain">[('identity_type', 'in', ['graduate', 'doctoral'])]</field>
+            <field name="domain">[('identity_type', 'in', ['master', 'doctorate'])]</field>
             <field name="view_ids"
                    eval="[(5, 0, 0),
                         

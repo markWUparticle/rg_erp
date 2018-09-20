@@ -9,6 +9,7 @@ class RgAllowance(models.Model):
     name = fields.Char('名称')
     create_date = fields.Datetime(string='日期')
     rg_allowance_fee_ids = fields.One2many('rg.allowance.fee', 'rg_allowance_id', '补助费用')
+    project = fields.Char('项目')
     total = fields.Float(string='总计/￥')
 
 
