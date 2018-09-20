@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_allowance_view_tree_245" model="ir.ui.view">
+            <field name="name">rg.allowance.view_tree</field>
+            <field name="model">rg.allowance</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="补助">
+               <field name="name"/>
+               <field name="create_date"/>
+              <field name="total"/>
+</tree>
+            </field>
+        </record>
+        <record id="rg_allowance_view_form_246" model="ir.ui.view">
+            <field name="name">rg.allowance.view_form</field>
+            <field name="model">rg.allowance</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="补助" version="7.0">
+    <sheet>
+        <div class="oe_title">
+            <group>
+                <field name="create_date"/>
+            </group>
+            <h1>
+                <field name="name" required="1"/>
+            </h1>
+        </div>
+        <group>
+            <notebook>
+                <page string="明细">
+                    <field name="rg_allowance_fee_ids">
+                        <tree editable="bottom">
+                            <field name="postgraduate_id"/>
+                            <field name="detail_ids" widget="many2many_tags"/>
+                            <field name="total" sum="余额"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </group>
+    </sheet>
+</form>
+            </field>
+        </record>
+        <record id="rg_allowance_action_90" model="ir.actions.act_window">
+            <field name="name">补助</field>
+            <field name="res_model">rg.allowance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_allowance_view_tree_245')}),
+                        
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_allowance_view_form_246')}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_allowance_action_90" id="rg_allowance_menuitem_88_1537446593" name="补助" parent="rg_account_menuitem_75_1537432933" sequence="10"/>
+
+    </data>
+</openerp>

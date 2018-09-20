@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_allowance_fee_detail_view_tree_323" model="ir.ui.view">
+            <field name="name">rg.allowance.fee.detail.view_tree</field>
+            <field name="model">rg.allowance.fee.detail</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="费用明细" editable="bottom">
+              <field name="name"/>
+              <field name="amount"/>
+
+ </tree>
+            </field>
+        </record>
+        <record id="rg_allowance_fee_detail_view_form_324" model="ir.ui.view">
+            <field name="name">rg.allowance.fee.detail.view_form</field>
+            <field name="model">rg.allowance.fee.detail</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="费用明细" version="7.0">
+                    <sheet>
+                    <group>
+               <field name="amount"/>
+               <field name="name"/>
+               <field name="rg_allowance_fee_id"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="rg_allowance_fee_detail_action_117" model="ir.actions.act_window">
+            <field name="name">费用明细</field>
+            <field name="res_model">rg.allowance.fee.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_allowance_fee_detail_view_tree_323')}),
+                        
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_allowance_fee_detail_view_form_324')}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_allowance_fee_detail_action_117" id="rg_allowance_fee_detail_menuitem_107_1537448541" name="补助模板" parent="parent_menu_106_1537448541" sequence="1"/>
+
+    </data>
+</openerp>

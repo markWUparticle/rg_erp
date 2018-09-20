@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem id="parent_menu_74_1537432933" name="课题组管理" parent=""  sequence="0"/>
+        <menuitem id="parent_menu_82_1537441293" name="成员" parent="parent_menu_74_1537432933"  sequence="2"/>
+        <menuitem id="rg_account_menuitem_75_1537432933" name="财务" parent="parent_menu_74_1537432933"  sequence="1"/>
+        <menuitem id="parent_menu_106_1537448541" name="设置" parent="parent_menu_74_1537432933"  sequence="3"/>
+
+    </data>
+</openerp>

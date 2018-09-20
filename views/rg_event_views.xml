@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_event_view_tree_247" model="ir.ui.view">
+            <field name="name">rg.event.view_tree</field>
+            <field name="model">rg.event</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="活动">
+               <field name="name"/>
+              <field name="create_date"/>
+               <field name="res_partner_ids"/>
+               <field name="total"/>
+                </tree>
+            </field>
+        </record>
+        <record id="rg_event_view_form_248" model="ir.ui.view">
+            <field name="name">rg.event.view_form</field>
+            <field name="model">rg.event</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="活动" version="7.0">
+      <sheet>
+        <div class="oe_title">
+            <group>
+                <field name="create_date"/>
+            </group>
+            <h1>
+                <field name="name" required="1"/>
+            </h1>
+        </div>
+              <h3>费用</h3>
+                    <field name="rg_event_fee_ids">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                <h3>参加人员</h3>
+                    <field name="res_partner_ids">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="phone"/>
+                        </tree>
+                    </field>
+    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="rg_event_action_91" model="ir.actions.act_window">
+            <field name="name">活动</field>
+            <field name="res_model">rg.event</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_event_view_tree_247')}),
+                        
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_event_view_form_248')}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_event_action_91" id="rg_event_menuitem_89_1537446593" name="活动" parent="rg_account_menuitem_75_1537432933" sequence="10"/>
+
+    </data>
+</openerp>
