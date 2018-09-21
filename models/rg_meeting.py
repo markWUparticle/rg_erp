@@ -24,4 +24,4 @@ class RgMeetingDetail(models.Model):
     rg_meeting_id = fields.Many2one('rg.meeting', string='会议')
     absentee_id = fields.Many2one('rg.partner', string='学生',
                                     domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)])
-    state = fields.Selection([('signed ', '已签到'), ('ask_for_leave', '请假'), ('absence', '缺勤')])
+    state = fields.Selection([('signed ', '已签到'), ('ask_for_leave', '请假'), ('absence', '缺勤')], string='状态')

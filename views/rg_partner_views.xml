@@ -21,19 +21,6 @@
 </tree>
             </field>
         </record>
-        <record id="rg_partner_view_form_238" model="ir.ui.view">
-            <field name="name">rg.partner.view_form</field>
-            <field name="model">rg.partner</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <form string="联系人" version="7.0">
-                    <sheet>
-                    <group>
-                    </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
         <record id="rg_partner_view_tree_243" model="ir.ui.view">
             <field name="name">rg.partner.view_tree</field>
             <field name="model">rg.partner</field>
@@ -47,19 +34,6 @@
     <field name="phone"/>
     <field name="email"/>
 </tree>
-            </field>
-        </record>
-        <record id="rg_partner_view_form_244" model="ir.ui.view">
-            <field name="name">rg.partner.view_form</field>
-            <field name="model">rg.partner</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <form string="联系人" version="7.0">
-                    <sheet>
-                    <group>
-                    </group>
-                    </sheet>
-                </form>
             </field>
         </record>
         <record id="rg_partner_action_126" model="ir.actions.act_window">
@@ -84,7 +58,7 @@
                         
                           (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_partner_view_tree_243')}),
                         
-                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_partner_view_form_244')}),
+                          (0, 0, {'view_mode': 'form'}),
                         
                     ]"/>
         </record>
@@ -101,7 +75,7 @@
                         
                           (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_partner_view_tree_237')}),
                         
-                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_partner_view_form_238')}),
+                          (0, 0, {'view_mode': 'form'}),
                         
                     ]"/>
         </record>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_meeting_view_tree_369" model="ir.ui.view">
+            <field name="name">rg.meeting.view_tree</field>
+            <field name="model">rg.meeting</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="会议">
+               <field name="name"/>
+               <field name="tutor_ids" widget="many2many_tags"/>
+               <field name="expect_attend_num"/>
+               <field name="actual_attend_num"/>
+               <field name="desc"/>
+</tree>
+            </field>
+        </record>
+        <record id="rg_meeting_view_form_370" model="ir.ui.view">
+            <field name="name">rg.meeting.view_form</field>
+            <field name="model">rg.meeting</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="会议" version="7.0">
+    <sheet>
+        <div class="oe_title">
+            <h1>
+                <field name="name" required="1"/>
+            </h1>
+        </div>
+        <group>
+            <field name="tutor_ids" widget="many2many_tags"/>
+           <field name="desc"/>
+        </group>
+        <group>
+          <group>
+             <field name="expect_attend_num"/>
+          </group>
+          <group>
+            <field name="actual_attend_num"/>
+          </group>
+        </group>
+        <notebook>
+            <page string="明细">
+                <field name="detail_ids">
+                    <tree editable="bottom">
+                        <field name="absentee_id"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </page>
+        </notebook>
+    </sheet>
+</form>
+            </field>
+        </record>
+        <record id="rg_meeting_action_138" model="ir.actions.act_window">
+            <field name="name">会议</field>
+            <field name="res_model">rg.meeting</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_meeting_view_tree_369')}),
+                        
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('rg_meeting_view_form_370')}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_meeting_action_138" id="rg_meeting_menuitem_135_1537526221" name="会议" parent="parent_menu_109_1537458490" sequence="2"/>
+
+    </data>
+</openerp>
