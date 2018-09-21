@@ -9,7 +9,9 @@
             <field name="arch" type="xml">
                 <tree string="费用明细" editable="bottom">
               <field name="name"/>
-              <field name="amount"/>
+               <field name="amount"/>
+              <field name="qty"/>
+               <field name="total"/>
 
  </tree>
             </field>

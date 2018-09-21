@@ -11,7 +11,7 @@ class RgMeeting(models.Model):
     create_date = fields.Datetime(string='日期')
     address = fields.Char(string='地点')
     tutor_ids = fields.Many2many('rg.partner', string='出席老师',
-                                    domain=[('identity_type', '=', 'tutor'),])
+                                    domain=[('identity_type', '=', 'tutor'), ('is_candidate', '=', True)])
     expect_attend_num = fields.Integer(string='预计学生人数')
     actual_attend_num = fields.Integer(string='实到学生人数')
     detail_ids = fields.One2many('rg.meeting.detail', 'rg_meeting_id', string='明细')

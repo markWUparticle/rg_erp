@@ -9,15 +9,17 @@
             <field name="arch" type="xml">
                 <tree string="联系人" editable="bottom">
     <field name="name" required="1"/>
+    <field name="gender"/>
     <field name="grade"/>
     <field name="postgraduate_type"/>
     <field name="tutor_id"/>
-    <field name="phone"/>
+    <field name="mobile"/>
     <field name="email"/>
+    <field name="student_id"/>
     <field name="id_card"/>
+     <field name="debit_card_no"/>
     <field name="native_place"/>
     <field name="is_candidate" invisible="1"/>
-    <!--<field name="bank_ids" widget="many2many_tags"/>-->
 </tree>
             </field>
         </record>
@@ -28,11 +30,32 @@
             <field name="arch" type="xml">
                 <tree string="联系人" editable="bottom">
     <field name="name" required="1"/>
+    <field name="gender"/>
     <field name="identity_type" invisible="1"/>
     <field name="title"/>
     <field name="mobile"/>
     <field name="phone"/>
     <field name="email"/>
+    <field name="is_candidate" string="在职"/>
+    
+</tree>
+            </field>
+        </record>
+        <record id="rg_partner_view_tree_373" model="ir.ui.view">
+            <field name="name">rg.partner.view_tree</field>
+            <field name="model">rg.partner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="联系人" editable="bottom">
+    <field name="name" required="1"/>
+    <field name="gender"/>
+    <field name="grade"/>
+    <field name="postgraduate_type"/>
+    <field name="tutor_id"/>
+    <field name="mobile"/>
+    <field name="phone"/>
+    <field name="email"/>
+    <field name="native_place"/>
 </tree>
             </field>
         </record>
@@ -44,6 +67,12 @@
             <field name="target">current</field>
             <field name="context">{'default_identity_type': 'postgraduate'}</field>
             <field name="domain">[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', False)]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_partner_view_tree_373')}),
+                        
+                    ]"/>
         </record>
         <record id="rg_partner_action_89" model="ir.actions.act_window">
             <field name="name">老师</field>
@@ -51,7 +80,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>
-            <field name="context">{'default_identity_type':  'tutor'}</field>
+            <field name="context">{'default_identity_type':  'tutor', 'default_is_candidate': True}</field>
             <field name="domain">[('identity_type', '=', 'tutor')]</field>
             <field name="view_ids"
                    eval="[(5, 0, 0),
@@ -78,6 +107,28 @@
                           (0, 0, {'view_mode': 'form'}),
                         
                     ]"/>
+        </record>
+        <record id="rg_partner_action_server_140" model="ir.actions.server">
+            <field name="name">改变攻读/在职状态</field>
+            <field name="condition"></field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_rg_partner"></field>
+            <field name="binding_model_id" ref="model_rg_partner"></field>
+            <field name="state">code</field>
+            <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+records.change_candidate_state()
+
+
+</field>
+            <field name="usage">ir_actions_server</field>
         </record>
         <menuitem action="rg_partner_action_89" id="rg_partner_menuitem_86_1537441294" name="老师" parent="parent_menu_82_1537441293" sequence="1"/>
         <menuitem action="rg_partner_action_86" id="rg_partner_menuitem_83_1537441294" name="在读学生" parent="parent_menu_82_1537441293" sequence="2"/>

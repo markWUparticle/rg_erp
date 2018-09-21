@@ -39,15 +39,18 @@
                     <field name="rg_event_fee_ids">
                         <tree editable="bottom">
                             <field name="name"/>
+                            <field name="amount"/>
+                            <field name="qty"/>
+                            <field name="total" sum="总计"/>
                         </tree>
                     </field>
                 <h3>参加人员</h3>
-                    <!--<field name="res_partner_ids">-->
-                        <!--<tree editable="bottom">-->
-                            <!--<field name="name"/>-->
-                            <!--<field name="phone"/>-->
-                        <!--</tree>-->
-                    <!--</field>-->
+                    <field name="postgraduate_ids">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="phone"/>
+                        </tree>
+                    </field>
     </sheet>
 
                 </form>
