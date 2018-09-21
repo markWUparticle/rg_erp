@@ -1,6 +1,6 @@
 
 from . import rg_account
-from . import res_partner
+from . import rg_partner
 from . import rg_allowance
 from . import rg_event
 from . import rg_attendance

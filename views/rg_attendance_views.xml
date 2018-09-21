@@ -75,7 +75,7 @@
                         
                     ]"/>
         </record>
-        <menuitem action="rg_attendance_action_121" id="rg_attendance_menuitem_110_1537458490" name="出勤" parent="parent_menu_109" sequence="10"/>
+        <menuitem action="rg_attendance_action_121" id="rg_attendance_menuitem_110_1537458490" name="出勤" parent="parent_menu_109_1537458490" sequence="1"/>
 
     </data>
 </openerp>

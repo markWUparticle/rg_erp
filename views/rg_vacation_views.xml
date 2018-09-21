@@ -63,7 +63,7 @@
                         
                     ]"/>
         </record>
-        <menuitem action="rg_vacation_action_122" id="rg_vacation_menuitem_111_1537458490" name="假期" parent="parent_menu_109" sequence="10"/>
+        <menuitem action="rg_vacation_action_122" id="rg_vacation_menuitem_111_1537458490" name="假期" parent="parent_menu_109_1537458490" sequence="2"/>
 
     </data>
 </openerp>

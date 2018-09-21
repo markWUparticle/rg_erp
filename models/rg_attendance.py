@@ -7,12 +7,12 @@ class RgAttendance(models.Model):
     _name = 'rg.attendance'
     _description = u'出勤'
 
-    name = fields.Char('名称')
+    name = fields.Char('名称', required='1')
     start_date = fields.Date(string='初始日期')
     end_date = fields.Date(string='结束日期')
     total_times = fields.Integer(string='总出勤数')
-    postgraduate_ids  = fields.Many2many('res.partner', string='全勤',
-                                         domain=[('identity_type', 'in', ['master', 'doctorate'])],
+    postgraduate_ids  = fields.Many2many('rg.partner', string='全勤',
+                                         domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)],
                                          compute='')
     detail_ids = fields.One2many('rg.attendance.detail', 'rg_attendance_id', string='明细')
 
@@ -22,8 +22,8 @@ class RgAttendanceDetail(models.Model):
     _description = u'出勤明细'
 
     rg_attendance_id = fields.Many2one('rg.attendance', string='出勤')
-    postgraduate_id = fields.Many2one('res.partner', string='姓名',
-                                      domain=[('identity_type', 'in', ['master', 'doctorate'])])
+    postgraduate_id = fields.Many2one('rg.partner', string='姓名',
+                                      domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)], required='1')
     times_of_normal = fields.Integer(string='正常')
     times_of_late = fields.Integer(string='迟到')
     times_of_leave = fields.Integer(string='请假')
