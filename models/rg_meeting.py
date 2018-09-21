@@ -9,6 +9,7 @@ class RgMeeting(models.Model):
 
     name = fields.Char('名称', required='1')
     create_date = fields.Datetime(string='日期')
+    address = fields.Char(string='地点')
     tutor_ids = fields.Many2many('rg.partner', string='出席老师',
                                     domain=[('identity_type', '=', 'tutor'),])
     expect_attend_num = fields.Integer(string='预计学生人数')
