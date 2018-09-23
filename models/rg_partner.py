@@ -12,7 +12,7 @@ class RgPartner(models.Model):
     sequence = fields.Integer('顺序')
     gender = fields.Selection([('male', '男'), ('female', '女'),], string='性别')
     debit_card_no = fields.Char(string='银行卡号')
-    postgraduate_type = fields.Selection([('postgraduate', '硕士'), ('doctorate', '博士'),], string='类别')
+    postgraduate_type = fields.Selection([('master', '硕士'), ('doctorate', '博士'),], string='类别')
     identity_type = fields.Selection([('tutor', '导师'), ('postgraduate', '研究生'),], string='类型')
     id_card = fields.Char(string='身份证号码')
     grade = fields.Char(string='年级',)

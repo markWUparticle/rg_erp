@@ -7,7 +7,7 @@
             <field name="model">rg.partner</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="联系人" editable="bottom">
+                <tree string="联系人" editable="top">
     <field name="name" required="1"/>
     <field name="gender"/>
     <field name="grade"/>
@@ -28,7 +28,7 @@
             <field name="model">rg.partner</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="联系人" editable="bottom">
+                <tree string="联系人" editable="top">
     <field name="name" required="1"/>
     <field name="gender"/>
     <field name="identity_type" invisible="1"/>
@@ -37,7 +37,6 @@
     <field name="phone"/>
     <field name="email"/>
     <field name="is_candidate" string="在职"/>
-    
 </tree>
             </field>
         </record>
@@ -46,7 +45,7 @@
             <field name="model">rg.partner</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="联系人" editable="bottom">
+                <tree string="联系人" editable="top">
     <field name="name" required="1"/>
     <field name="gender"/>
     <field name="grade"/>

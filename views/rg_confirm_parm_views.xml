@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_confirm_parm_view_tree_381" model="ir.ui.view">
+            <field name="name">rg.confirm.parm.view_tree</field>
+            <field name="model">rg.confirm.parm</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="参数" editable="top">
+               <field name="name"/>
+               <field name="element" required="1"/>
+                <field name="is_default"/>
+                </tree>
+            </field>
+        </record>
+        <record id="rg_confirm_parm_action_143" model="ir.actions.act_window">
+            <field name="name">参数</field>
+            <field name="res_model">rg.confirm.parm</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                        
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('rg_confirm_parm_view_tree_381')}),
+                        
+                          (0, 0, {'view_mode': 'form'}),
+                        
+                    ]"/>
+        </record>
+        <menuitem action="rg_confirm_parm_action_143" id="rg_confirm_parm_menuitem_139_1537591135" name="参数" parent="parent_menu_106_1537448541" sequence="10"/>
+
+    </data>
+</openerp>

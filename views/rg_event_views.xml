@@ -28,12 +28,16 @@
               <field name="create_date"/>
             </group>
             <group>
-            
+              <field name="address"/>
             </group>
           </group>
             <h1>
                 <field name="name" required="1"/>
             </h1>
+            
+        <group>
+           <field name="desc"/>
+        </group>
         </div>
               <h3>费用</h3>
                     <field name="rg_event_fee_ids">

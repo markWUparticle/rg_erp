@@ -18,6 +18,8 @@
         'views/rg_meeting_views.xml',
         'views/rg_vacation_views.xml',
         'views/rg_attendance_views.xml',
+        'views/rg_confirm_parm_views.xml',
+        'views/rg_confirm_views.xml',
         'views/rg_allowance_fee_detail_views.xml',
     ],
     'qweb': [

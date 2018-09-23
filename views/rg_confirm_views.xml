@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rg_confirm_view_form_384" model="ir.ui.view">
+            <field name="name">rg.confirm.view_form</field>
+            <field name="model">rg.confirm</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="确认">
+                    <field name="info" readonly="1"/>
+                    <field name="parm_ids"/>
+                    <!--widget="many2many_tags"-->
+                    <footer>
+                      <button name="execute_with_parm" string="确定" type="object" class="oe_highlight"/>
+                      <button string="放弃" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

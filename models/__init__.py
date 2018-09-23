@@ -6,3 +6,4 @@ from . import rg_event
 from . import rg_attendance
 from . import rg_vacation
 from . import rg_meeting
+from . import rg_confirm
