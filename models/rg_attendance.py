@@ -15,7 +15,7 @@ class RgAttendance(models.Model):
                                          domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)],
                                          compute='')
     detail_ids = fields.One2many('rg.attendance.detail', 'rg_attendance_id', string='明细')
-
+    #全勤补助
 
 class RgAttendanceDetail(models.Model):
     _name = 'rg.attendance.detail'

@@ -22,7 +22,9 @@
             <field name="arch" type="xml">
                 <form string="补助" version="7.0">
   <header>
-    <button string="添加学生" type="object" class="oe_highlight" name="action_write_postgraduate"/>
+    <button string="添加学生" type="object" class="oe_highlight" name="action_generate_postgraduate"/>
+     <button string="添加补助" type="object" class="oe_highlight" name="action_generate_postgraduate"/>
+      <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
   </header>
     <sheet>
         <div class="oe_title">
@@ -71,7 +73,7 @@
                         
                     ]"/>
         </record>
-        <menuitem action="rg_allowance_action_90" id="rg_allowance_menuitem_88_1537446593" name="补助" parent="rg_account_menuitem_75_1537432933" sequence="10"/>
+        <menuitem action="rg_allowance_action_90" id="rg_allowance_menuitem_88_1537446593" name="补助" parent="rg_account_menuitem_75_1537432933" sequence="2"/>
 
     </data>
 </openerp>

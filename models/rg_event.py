@@ -18,6 +18,8 @@ class RgEvent(models.Model):
                                        domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)])
     total = fields.Float(string='总计/￥', compute='_compute_total_amount')
 
+    # 活动经费从账户账户中出
+
     @api.depends('rg_event_fee_ids')
     def _compute_total_amount(self):
         for obj in self:

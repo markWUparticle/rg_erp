@@ -75,7 +75,7 @@
                         
                     ]"/>
         </record>
-        <menuitem action="rg_event_action_91" id="rg_event_menuitem_89_1537446593" name="活动" parent="rg_account_menuitem_75_1537432933" sequence="10"/>
+        <menuitem action="rg_event_action_91" id="rg_event_menuitem_140_1537861481" name="活动" parent="parent_menu_109_1537458490" sequence="3"/>
 
     </data>
 </openerp>

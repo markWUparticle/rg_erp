@@ -9,7 +9,12 @@
             <field name="arch" type="xml">
                 <form string="确认">
                     <field name="info" readonly="1"/>
-                    <field name="parm_ids"/>
+                    <field name="parm_ids">
+                      <tree>
+                        <field name="name"/>
+                        <field name="element"/>
+                      </tree>
+                    </field>
                     <!--widget="many2many_tags"-->
                     <footer>
                       <button name="execute_with_parm" string="确定" type="object" class="oe_highlight"/>

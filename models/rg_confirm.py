@@ -11,6 +11,7 @@ class RgConfirm(models.TransientModel):
     model = fields.Char('模型')
     method = fields.Char('方法')
     parm_ids = fields.Many2many('rg.confirm.parm', string='参数')
+    allowance_fee_ids = fields.Many2many('rg.allowance.fee.detail', string='补助费用')
 
     @api.multi
     def execute(self):
