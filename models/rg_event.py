@@ -15,10 +15,12 @@ class RgEvent(models.Model):
     tutor_ids = fields.Many2many('rg.partner', string='参与老师',
                                        domain=[('identity_type', '=', 'tutor'), ('is_candidate', '=', True)])
     postgraduate_ids = fields.Many2many('rg.partner', string='参加人员',
-                                       domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)])
+                                       domain=[('is_candidate', '=', True)])
     total = fields.Float(string='总计/￥', compute='_compute_total_amount')
-
+    postgraduate_nums = fields.Integer(string='参加人数', compute='_compute_postgraduate_nums')
     # 活动经费从账户账户中出
+    state = fields.Selection([('cancel', '取消'), ('draft', '草稿'), ('pending', '进行中'), ('done', '完成')],
+                             default='draft', string='状态')
 
     @api.depends('rg_event_fee_ids')
     def _compute_total_amount(self):
@@ -27,6 +29,14 @@ class RgEvent(models.Model):
             for fee in obj.rg_event_fee_ids:
                 total += fee.total
             obj.total = total
+
+    @api.depends('postgraduate_ids')
+    def _compute_postgraduate_nums(self):
+        for obj in self:
+            obj.postgraduate_nums = len(obj.postgraduate_ids)
+
+# 添加通知人 及状态
+
 
 
 class RgEventFee(models.Model):

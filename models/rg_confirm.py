@@ -10,8 +10,14 @@ class RgConfirm(models.TransientModel):
     info = fields.Text("信息")
     model = fields.Char('模型')
     method = fields.Char('方法')
+
+    # 暂时用不上
     parm_ids = fields.Many2many('rg.confirm.parm', string='参数')
-    allowance_fee_ids = fields.Many2many('rg.allowance.fee.detail', string='补助费用')
+    # onchange
+    postgraduate_id = fields.Many2many('rg.partner', string='学生',
+                                      domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)])
+    allowance_type = fields.Selection([('meal', '生活补助'), ('perfect_attendance', '全勤奖'),
+                                       ('transportation', '路费补助'), ('other', '其他')])
 
     @api.multi
     def execute(self):

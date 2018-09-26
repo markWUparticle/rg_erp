@@ -8,7 +8,7 @@ class RgAttendance(models.Model):
     _description = u'出勤'
 
     name = fields.Char('名称', required='1')
-    start_date = fields.Date(string='初始日期')
+    start_date = fields.Date(string='开始日期')
     end_date = fields.Date(string='结束日期')
     total_times = fields.Integer(string='总出勤数')
     postgraduate_ids  = fields.Many2many('rg.partner', string='全勤',
@@ -16,6 +16,7 @@ class RgAttendance(models.Model):
                                          compute='')
     detail_ids = fields.One2many('rg.attendance.detail', 'rg_attendance_id', string='明细')
     #全勤补助
+    rg_allowance_id = fields.Many2one('rg.allowance', string='补助单')
 
 class RgAttendanceDetail(models.Model):
     _name = 'rg.attendance.detail'

@@ -21,43 +21,54 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="活动" version="7.0">
-      <sheet>
+    <header>
+    <button string="通知成员" type="object" class="oe_highlight" name=""/>
+     <button string="取消" type="object" class="" name=""/>
+    <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
+  </header>
+    <sheet>
         <div class="oe_title">
-          <group>
             <group>
-              <field name="create_date"/>
+                <group>
+                    <field name="create_date"/>
+                    <field name="postgraduate_nums"/>
+                </group>
+                <group>
+                    <field name="address"/>
+                </group>
             </group>
-            <group>
-              <field name="address"/>
-            </group>
-          </group>
             <h1>
                 <field name="name" required="1"/>
             </h1>
-            
-        <group>
-           <field name="desc"/>
-        </group>
+            <group>
+                <field name="desc"/>
+            </group>
         </div>
-              <h3>费用</h3>
-                    <field name="rg_event_fee_ids">
-                        <tree editable="bottom">
-                            <field name="name"/>
-                            <field name="amount"/>
-                            <field name="qty"/>
-                            <field name="total" sum="总计"/>
-                        </tree>
-                    </field>
-                <h3>参加人员</h3>
-                    <field name="postgraduate_ids">
-                        <tree editable="bottom">
-                            <field name="name"/>
-                            <field name="phone"/>
-                        </tree>
-                    </field>
+        <h3>费用</h3>
+        <field name="rg_event_fee_ids">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="amount"/>
+                <field name="qty"/>
+                <field name="total" sum="总计"/>
+            </tree>
+        </field>
+        <notebook>
+            <page string="参加人员">
+                <field name="postgraduate_ids">
+                    <tree editable="bottom">
+                        <field name="grade"/>
+                        <field name="postgraduate_type"/>
+                        <field name="name"/>
+                        <field name="gender"/>
+                        <field name="mobile"/>
+                    </tree>
+                </field>
+            </page>
+            <page string="通知名单"/>
+        </notebook>
     </sheet>
-
-                </form>
+</form>
             </field>
         </record>
         <record id="rg_event_action_91" model="ir.actions.act_window">

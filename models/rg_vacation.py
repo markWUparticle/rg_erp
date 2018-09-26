@@ -12,6 +12,7 @@ class RgVacation(models.Model):
     name = fields.Char(string='名称', required='1')
     rg_vacation_record_ids = fields.One2many('rg.vacation.record', 'rg_vacation_id', string='时间记录')
     # 寒暑假路费补助
+    rg_allowance_id = fields.Many2one('rg.allowance', string='补助单')
 
 class RgVacationRecord(models.Model):
     _name = 'rg.vacation.record'

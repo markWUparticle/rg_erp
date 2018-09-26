@@ -9,9 +9,9 @@
             <field name="arch" type="xml">
                 <tree string="补助">
                <field name="name"/>
-               <field name="project"/>
                <field name="create_date"/>
               <field name="total"/>
+              <field name="state"/>
 </tree>
             </field>
         </record>
@@ -22,9 +22,9 @@
             <field name="arch" type="xml">
                 <form string="补助" version="7.0">
   <header>
-    <button string="添加学生" type="object" class="oe_highlight" name="action_generate_postgraduate"/>
-     <button string="添加补助" type="object" class="oe_highlight" name="action_generate_postgraduate"/>
-      <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
+    <button string="添加补助" type="object" class="oe_highlight" name="action_generate_postgraduate"/>
+    <button string="取消" type="object" class="" name=""/>
+    <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
   </header>
     <sheet>
         <div class="oe_title">
@@ -33,7 +33,7 @@
                 <field name="create_date"/>
             </group>
              <group>
-                <field name="project"/>
+              
             </group>
             </group>
             <h1>
@@ -50,6 +50,7 @@
                             <field name="tutor_id" readonly="1"/>
                             <field name="detail_ids" widget="many2many_tags"/>
                             <field name="total" sum="小计"/>
+                            <field name="project"/>
                         </tree>
                     </field>
                 </page>

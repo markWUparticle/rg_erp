@@ -10,7 +10,6 @@ class RgAllowance(models.Model):
     name = fields.Char('名称', required='1')
     create_date = fields.Datetime(string='日期')
     rg_allowance_fee_ids = fields.One2many('rg.allowance.fee', 'rg_allowance_id', '补助费用')
-    project = fields.Char('项目')
     total = fields.Float(string='总计/￥', compute='_compute_total_amount')
     state = fields.Selection([('cancel', '取消'), ('draft', '草稿'), ('pending', '待确认'), ('done', '已确认')],
                              default='draft', string='状态')
@@ -97,6 +96,7 @@ class RgAllowanceFee(models.Model):
     postgraduate_type = fields.Selection([('master', '硕士'), ('doctorate', '博士'), ], related='postgraduate_id.postgraduate_type', string='类别')
     grade = fields.Char(string='年级', related='postgraduate_id.grade',)
     tutor_id = fields.Many2one('rg.partner', string='导师', domain=[('identity_type', '=', 'tutor')], related='postgraduate_id.tutor_id',)
+    project = fields.Char('项目')
 
     detail_ids = fields.Many2many('rg.allowance.fee.detail',  string='明细')
     total = fields.Float(string='小计/￥', compute='_compute_total_amount')
