@@ -40,21 +40,21 @@
                 <field name="name" required="1"/>
             </h1>
         </div>
-            <notebook>
-                <page string="学生">
-                    <field name="rg_allowance_fee_ids">
-                        <tree editable="top">
-                            <field name="postgraduate_id"/>
-                            <field name="grade" readonly="1"/>
-                            <field name="postgraduate_type" readonly="1"/>
-                            <field name="tutor_id" readonly="1"/>
-                            <field name="detail_ids" widget="many2many_tags"/>
-                            <field name="total" sum="小计"/>
-                            <field name="project"/>
-                        </tree>
-                    </field>
-                </page>
-            </notebook>
+            <!--<notebook>-->
+                <!--<page string="学生">-->
+                    <!--<field name="detail_ids">-->
+                        <!--<tree editable="top">-->
+                            <!--<field name="postgraduate_id"/>-->
+                            <!--<field name="grade" readonly="1"/>-->
+                            <!--<field name="postgraduate_type" readonly="1"/>-->
+                            <!--<field name="tutor_id" readonly="1"/>-->
+                            <!--<field name="detail_ids" widget="many2many_tags"/>-->
+                            <!--<field name="total" sum="小计"/>-->
+                            <!--<field name="project"/>-->
+                        <!--</tree>-->
+                    <!--</field>-->
+                <!--</page>-->
+            <!--</notebook>-->
     </sheet>
 </form>
             </field>

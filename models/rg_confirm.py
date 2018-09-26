@@ -11,13 +11,22 @@ class RgConfirm(models.TransientModel):
     model = fields.Char('模型')
     method = fields.Char('方法')
 
-    # 暂时用不上
-    parm_ids = fields.Many2many('rg.confirm.parm', string='参数')
     # onchange
-    postgraduate_id = fields.Many2many('rg.partner', string='学生',
-                                      domain=[('identity_type', '=', 'postgraduate'), ('is_candidate', '=', True)])
-    allowance_type = fields.Selection([('meal', '生活补助'), ('perfect_attendance', '全勤奖'),
-                                       ('transportation', '路费补助'), ('other', '其他')])
+    postgraduate_ids = fields.Many2many('rg.partner', string='学生',
+                                      domain=[('is_candidate', '=', True)])
+    rg_allowance_type_id = fields.Many2one('rg.allowance.type', string='费用类型')
+    rg_attendance_id = fields.Many2one('rg.attendance', string='考勤记录')
+    rg_vacation_id = fields.Many2one('rg.vacation', string='假期记录')
+
+    @api.onchange('rg_allowance_type_id')
+    def _onchange_postgraduate_ids(self):
+        self.postgraduate_ids = ()
+        if self.rg_allowance_type_id.name in ['生活补助', '路费补助'] :
+            self.postgraduate_ids = self.env['rg.partner'].search([('identity_type', '=', 'postgraduate'),
+                                                                   ('is_candidate', '=', 'True'),]).filtered(lambda i: i.tutor_id != '殷素红')
+        if self.rg_allowance_type_id.name == '全勤奖':
+            self.postgraduate_ids = self.rg_attendance_id.postgraduate_ids
+
 
     @api.multi
     def execute(self):
@@ -32,14 +41,7 @@ class RgConfirm(models.TransientModel):
         self.ensure_one()
         active_ids = self._context.get('record_ids')
         rs = self.env[self.model].browse(active_ids)
-        ret = getattr(rs, self.method)(self.parm_ids)
-        return ret
+        print(self.rg_allowance_type)
+        # ret = getattr(rs, self.method)()
+        return 1
 
-
-class RgConfirmParm(models.TransientModel):
-    _name = 'rg.confirm.parm'
-    _description = u'参数'
-
-    name = fields.Char('名字')
-    element = fields.Char('条件表达式')
-    is_default = fields.Boolean('默认')

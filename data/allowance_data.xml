@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+     <data noupdate="1">
+        <record id="meal_allowance" model="rg.allowance.type">
+            <field name="name">生活补助</field>
+        </record>
+        <record id="transportation_allowance" model="rg.allowance.type">
+            <field name="name">路费补助</field>
+        </record>
+        <record id="attendance_allowance" model="rg.allowance.type">
+            <field name="name">全勤奖</field>
+        </record>
+     </data>
+</odoo>
