@@ -18,12 +18,12 @@ class RgConfirm(models.TransientModel):
     rg_attendance_id = fields.Many2one('rg.attendance', string='考勤记录')
     rg_vacation_id = fields.Many2one('rg.vacation', string='假期记录')
 
-    @api.onchange('rg_allowance_type_id')
+    @api.onchange('rg_allowance_type_id', 'rg_attendance_id')
     def _onchange_postgraduate_ids(self):
         self.postgraduate_ids = ()
         if self.rg_allowance_type_id.name in ['生活补助', '路费补助'] :
             self.postgraduate_ids = self.env['rg.partner'].search([('identity_type', '=', 'postgraduate'),
-                                                                   ('is_candidate', '=', 'True'),]).filtered(lambda i: i.tutor_id != '殷素红')
+                                                                   ('is_candidate', '=', 'True'),]).filtered(lambda i: i.tutor_id.name != '殷素红')
         if self.rg_allowance_type_id.name == '全勤奖':
             self.postgraduate_ids = self.rg_attendance_id.postgraduate_ids
 

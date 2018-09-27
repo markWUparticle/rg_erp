@@ -35,8 +35,27 @@ class RgEvent(models.Model):
         for obj in self:
             obj.postgraduate_nums = len(obj.postgraduate_ids)
 
-# 添加通知人 及状态
-
+    @api.multi
+    def action_generate_partner_list(self):
+        self.ensure_one()
+        new_context = dict(self._context) or {}
+        new_context.update({
+            'default_model': 'rg.event',
+            'default_method': 'generate_postgraduate',
+            'default_info': '通知名单',
+            'record_ids': self.id,
+        })
+        return {
+            'name': u'添加成员',
+            'type': 'ir.actions.act_window',
+            'res_model': 'rg.confirm',
+            'res_id': None,
+            'view_id': self.env.ref('rg_erp.rg_confirm_view_form_385').id,
+            'view_mode': 'form',
+            'view_type': 'form',
+            'context': new_context,
+            'target': 'new'
+        }
 
 
 class RgEventFee(models.Model):

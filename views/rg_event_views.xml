@@ -22,7 +22,7 @@
             <field name="arch" type="xml">
                 <form string="活动" version="7.0">
     <header>
-    <button string="通知成员" type="object" class="oe_highlight" name=""/>
+    <button string="通知名单" type="object" class="oe_highlight" name="action_generate_partner_list"/>
      <button string="取消" type="object" class="" name=""/>
     <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
   </header>

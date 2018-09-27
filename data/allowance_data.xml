@@ -10,5 +10,53 @@
         <record id="attendance_allowance" model="rg.allowance.type">
             <field name="name">全勤奖</field>
         </record>
+         <record id="meal_allowance_1" model="rg.allowance.fee">
+            <field name="type_id" ref="rg_erp.meal_allowance"/>
+            <field name="name">硕一上学期</field>
+            <field name="level">1</field>
+            <field name="qty">2</field>
+            <field name="amount">250</field>
+            <field name="total">500</field>
+        </record>
+         <record id="meal_allowance_2" model="rg.allowance.fee">
+             <field name="type_id" ref="rg_erp.meal_allowance"/>
+            <field name="name">硕一下学期</field>
+            <field name="level">2</field>
+            <field name="qty">2</field>
+            <field name="amount">300</field>
+            <field name="total">600</field>
+        </record>
+                  <record id="meal_allowance_3" model="rg.allowance.fee">
+                      <field name="type_id" ref="rg_erp.meal_allowance"/>
+            <field name="name">硕二上学期</field>
+            <field name="level">3</field>
+            <field name="qty">2</field>
+            <field name="amount">350</field>
+            <field name="total">700</field>
+        </record>
+         <record id="meal_allowance_4" model="rg.allowance.fee">
+             <field name="type_id" ref="rg_erp.meal_allowance"/>
+            <field name="name">硕二下学期</field>
+            <field name="level">4</field>
+            <field name="qty">2</field>
+            <field name="amount">400</field>
+            <field name="total">800</field>
+        </record>
+         <record id="meal_allowance_5" model="rg.allowance.fee">
+             <field name="type_id" ref="rg_erp.meal_allowance"/>
+            <field name="name">硕三上学期</field>
+            <field name="level">5</field>
+            <field name="qty">2</field>
+            <field name="amount">450</field>
+            <field name="total">900</field>
+        </record>
+         <record id="meal_allowance_6" model="rg.allowance.fee">
+             <field name="type_id" ref="rg_erp.meal_allowance"/>
+            <field name="name">硕三上学期</field>
+            <field name="level">6</field>
+            <field name="qty">2</field>
+            <field name="amount">500</field>
+            <field name="total">1000</field>
+        </record>
      </data>
 </odoo>

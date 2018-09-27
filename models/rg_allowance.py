@@ -1,5 +1,6 @@
 # coding=utf-8
 
+import datetime
 from odoo import models, fields, api
 
 
@@ -44,46 +45,41 @@ class RgAllowance(models.Model):
             'target': 'new'
         }
 
-    @api.model
-    def generate_postgraduate(self, parms):
-        domain = []
-        for parm in parms:
-            element = parm.element.split(',')
-            if 'tutor_id' in element:
-                element[2] = self.env['rg.partner'].search([('name', '=', element[2])], limit=1).id
-            domain.append(tuple(element))
-        partner_ids = self.env['rg.partner'].search(domain)
-        for partner in partner_ids:
-            vals = {
-                'postgraduate_id': partner.id,
-                'rg_allowance_id': self.id,
-            }
-            self.env['rg.allowance.fee'].create(vals)
+    # @api.model
+    # def generate_postgraduate(self, parms):
+    #     domain = []
+    #     for parm in parms:
+    #         element = parm.element.split(',')
+    #         if 'tutor_id' in element:
+    #             element[2] = self.env['rg.partner'].search([('name', '=', element[2])], limit=1).id
+    #         domain.append(tuple(element))
+    #     partner_ids = self.env['rg.partner'].search(domain)
+    #     for partner in partner_ids:
+    #         vals = {
+    #             'postgraduate_id': partner.id,
+    #             'rg_allowance_id': self.id,
+    #         }
+    #         self.env['rg.allowance.fee'].create(vals)
 
-    @api.multi
-    def action_generate_fee(self):
-        self.ensure_one()
-        new_context = dict(self._context) or {}
-        new_context.update({
-            'default_model': 'rg.allowance',
-            'default_method': 'generate_fee',
-            'default_info': '请选择补助类型',
-            'record_ids': self.id,
-        })
-        return {
-            'name': u'添加补助费用',
-            'type': 'ir.actions.act_window',
-            'res_model': 'rg.confirm',
-            'res_id': None,
-            'view_mode': 'form',
-            'view_type': 'form',
-            'context': new_context,
-            'target': 'new'
-        }
 
     @api.model
-    def generate_fee(self):
-        pass
+    def generate_allowance_fee(self, rg_allowance_type_id, postgraduate_ids):
+        type = self.env['rg.allowance.type'].browse(rg_allowance_type_id)
+        month = self.create_date.month
+        year = self.create_date.year
+        dict = {}
+        # for allowance_fee in type.rg_allowance_fee_ids:
+        #     if type.name == '生活补助':
+        #         if month in [9, 10, 11, 12, 1]:
+        #             for postgraduate in postgraduate_ids:
+        #                 if postgraduate.grade == year and allowance_fee:
+        #                     val ={
+        #                         'postgraduate_id': postgraduate.id,
+        #                         'rg_allowance_id': self.id,
+        #                         'rg_allowance_fee_ids': allowance_fee.id,
+        #                     }
+        #                 if postgraduate.grade == (year - 1):
+
 
 class RgAllowanceDetail(models.Model):
     _name = 'rg.allowance.detail'
@@ -97,16 +93,16 @@ class RgAllowanceDetail(models.Model):
     grade = fields.Char(string='年级', related='postgraduate_id.grade',)
     tutor_id = fields.Many2one('rg.partner', string='导师', domain=[('identity_type', '=', 'tutor')], related='postgraduate_id.tutor_id',)
     project = fields.Char('项目')
-
+    rg_allowance_fee_ids = fields.Many2many('rg.allowance.fee', string='补助费用')
     total = fields.Float(string='小计/￥', compute='')
-    #
-    # @api.depends('detail_ids')
-    # def _compute_total_amount(self):
-    #     for obj in self:
-    #         total = 0
-    #         for fee in obj.detail_ids:
-    #             total += fee.total
-    #         obj.total = total
+
+    @api.depends('rg_allowance_fee_ids')
+    def _compute_total_amount(self):
+        for obj in self:
+            total = 0
+            for fee in obj.rg_allowance_fee_ids:
+                total += fee.total
+            obj.total = total
 
 
 class RgAllowanceFee(models.Model):
