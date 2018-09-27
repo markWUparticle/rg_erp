@@ -35,7 +35,7 @@
 </form>
             </field>
         </record>
-  <record id="rg_confirm_view_form_385" model="ir.ui.view">
+        <record id="rg_confirm_view_form_385" model="ir.ui.view">
             <field name="name">rg.confirm.view_form</field>
             <field name="model">rg.confirm</field>
             <field name="type">form</field>
@@ -53,11 +53,12 @@
         </tree>
     </field>
     <footer>
-        <button name="execute_with_parm" string="确定" type="object" class="oe_highlight"/>
+        <button name="execute_with_partner" string="确定" type="object" class="oe_highlight"/>
         <button string="放弃" class="oe_link" special="cancel"/>
     </footer>
 </form>
             </field>
         </record>
+
     </data>
 </openerp>

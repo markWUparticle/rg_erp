@@ -18,6 +18,7 @@ class RgAttendance(models.Model):
     #全勤补助
     rg_allowance_id = fields.Many2one('rg.allowance', string='补助单')
 
+
 class RgAttendanceDetail(models.Model):
     _name = 'rg.attendance.detail'
     _description = u'出勤明细'

@@ -10,8 +10,9 @@
                 <tree string="活动">
                <field name="name"/>
               <field name="create_date"/>
-               <!--<field name="res_partner_ids"/>-->
+               <field name="postgraduate_nums"/>
                <field name="total"/>
+                <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -22,7 +23,8 @@
             <field name="arch" type="xml">
                 <form string="活动" version="7.0">
     <header>
-    <button string="通知名单" type="object" class="oe_highlight" name="action_generate_partner_list"/>
+    <button string="创建通知名单" type="object" class="" name="action_generate_partner_list"/>
+     <button string="完成" type="object" class="oe_highlight" name=""/>
      <button string="取消" type="object" class="" name=""/>
     <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
   </header>
@@ -65,7 +67,18 @@
                     </tree>
                 </field>
             </page>
-            <page string="通知名单"/>
+            <page string="通知名单">
+               <field name="rg_event_partner_ids">
+                    <tree editable="bottom">
+                        <field name="grade" readonly="1"/>
+                        <field name="postgraduate_type" readonly="1"/>
+                        <field name="postgraduate_id" readonly="1"/>
+                        <field name="gender" readonly="1"/>
+                        <field name="mobile" readonly="1"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </page>
         </notebook>
     </sheet>
 </form>

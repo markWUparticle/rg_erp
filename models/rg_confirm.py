@@ -37,11 +37,10 @@ class RgConfirm(models.TransientModel):
         return ret
 
     @api.multi
-    def execute_with_parm(self):
+    def execute_with_partner(self):
         self.ensure_one()
         active_ids = self._context.get('record_ids')
         rs = self.env[self.model].browse(active_ids)
-        print(self.rg_allowance_type)
-        # ret = getattr(rs, self.method)()
-        return 1
+        ret = getattr(rs, self.method)(self.postgraduate_ids)
+        return ret
 

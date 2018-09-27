@@ -24,6 +24,9 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="会议" version="7.0">
+      <header>
+    <button string="添加参加名单" type="object" class="" name="action_generate_partner_list"/>
+    </header>
     <sheet>
         <div class="oe_title">
         <group>
